@@ -21,7 +21,7 @@ import java.util.List;
 public class PermissionUtils {
 
     /**
-     * 第一次检查权限，用在打开应用的时候请求应用需要的所有权限
+     * Check permissions for the first time, and request all permissions required by the application when opening the application
      *
      * @param context
      * @param requestCode 请求码
@@ -45,7 +45,7 @@ public class PermissionUtils {
     }
 
     /**
-     * 第二次检查权限，用在某个操作需要某个权限的时候调用
+     * Check the permission for the second time, which is called when an operation requires a certain permission
      *
      * @param context
      * @param requestCode 请求码

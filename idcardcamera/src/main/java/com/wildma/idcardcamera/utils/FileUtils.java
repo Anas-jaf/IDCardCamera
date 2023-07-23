@@ -16,7 +16,7 @@ import java.io.IOException;
 public final class FileUtils {
 
     /**
-     * 得到SD卡根目录，SD卡不可用则获取内部存储的根目录
+     * Get the root directory of the SD card, if the SD card is not available, get the root directory of the internal storage
      */
     public static File getRootPath() {
         File path = null;
@@ -29,7 +29,7 @@ public final class FileUtils {
     }
 
     /**
-     * SD卡是否可用
+     * Whether the SD card is available
      */
     public static boolean sdCardIsAvailable() {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
@@ -40,20 +40,20 @@ public final class FileUtils {
     }
 
     /**
-     * 判断目录是否存在，不存在则判断是否创建成功
+     * Determine whether the directory exists, if it does not exist, determine whether the creation is successful
      *
-     * @param dirPath 文件路径
-     * @return {@code true}: 存在或创建成功<br>{@code false}: 不存在或创建失败
+     * @param dirPath file path
+     * @return {@code true}: exists or created successfully<br>{@code false}: does not exist or failed to create
      */
     public static boolean createOrExistsDir(String dirPath) {
         return createOrExistsDir(getFileByPath(dirPath));
     }
 
     /**
-     * 判断目录是否存在，不存在则判断是否创建成功
+     * Determine whether the directory exists, if it does not exist, determine whether the creation is successful
      *
-     * @param file 文件
-     * @return {@code true}: 存在或创建成功<br>{@code false}: 不存在或创建失败
+     * @param file file
+     * @return {@code true}: exists or created successfully<br>{@code false}: does not exist or failed to create
      */
     public static boolean createOrExistsDir(File file) {
         // 如果存在，是目录则返回true，是文件则返回false，不存在则返回是否创建成功
@@ -61,25 +61,25 @@ public final class FileUtils {
     }
 
     /**
-     * 判断文件是否存在，不存在则判断是否创建成功
+     * Determine whether the file exists, if it does not exist, determine whether the creation is successful
      *
-     * @param filePath 文件路径
-     * @return {@code true}: 存在或创建成功<br>{@code false}: 不存在或创建失败
+     * @param filePath file path
+     * @return {@code true}: exists or created successfully<br>{@code false}: does not exist or failed to create
      */
     public static boolean createOrExistsFile(String filePath) {
         return createOrExistsFile(getFileByPath(filePath));
     }
 
     /**
-     * 判断文件是否存在，不存在则判断是否创建成功
+     * Determine whether the file exists, if it does not exist, determine whether the creation is successful
      *
-     * @param file 文件
-     * @return {@code true}: 存在或创建成功<br>{@code false}: 不存在或创建失败
+     * @param file file
+     * @return {@code true}: exists or created successfully<br>{@code false}: does not exist or failed to create
      */
     public static boolean createOrExistsFile(File file) {
         if (file == null)
             return false;
-        // 如果存在，是文件则返回true，是目录则返回false
+        // If it exists, it returns true if it is a file, and false if it is a directory
         if (file.exists())
             return file.isFile();
         if (!createOrExistsDir(file.getParentFile()))
@@ -93,17 +93,17 @@ public final class FileUtils {
     }
 
     /**
-     * 根据文件路径获取文件
+     * Get the file according to the file path
      *
-     * @param filePath 文件路径
-     * @return 文件
+     * @param filePath file path
+     * @return file
      */
     public static File getFileByPath(String filePath) {
         return isSpace(filePath) ? null : new File(filePath);
     }
 
     /**
-     * 判断字符串是否为 null 或全为空白字符
+     * Determine whether the string is null or all blank characters
      *
      * @param s
      * @return
@@ -111,8 +111,8 @@ public final class FileUtils {
     private static boolean isSpace(final String s) {
         if (s == null)
             return true;
-        for (int i = 0, len = s.length(); i < len; ++i) {
-            if (!Character.isWhitespace(s.charAt(i))) {
+        for (int i = 0, len = s. length(); i < len; ++i) {
+            if (!Character. isWhitespace(s. charAt(i))) {
                 return false;
             }
         }
@@ -120,7 +120,7 @@ public final class FileUtils {
     }
 
     /**
-     * 关闭IO
+     * close IO
      *
      * @param closeables closeable
      */
@@ -130,7 +130,7 @@ public final class FileUtils {
         try {
             for (Closeable closeable : closeables) {
                 if (closeable != null) {
-                    closeable.close();
+                    closeable. close();
                 }
             }
         } catch (IOException e) {
@@ -139,27 +139,27 @@ public final class FileUtils {
     }
 
     /**
-     * 获取缓存图片的目录
+     * Get the directory of cached images
      *
      * @param context Context
-     * @return 缓存图片的目录
+     * @return directory of cached images
      */
     public static String getImageCacheDir(Context context) {
         File file;
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             file = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         } else {
-            file = context.getCacheDir();
+            file = context. getCacheDir();
         }
-        String path = file.getPath() + "/cache";
+        String path = file. getPath() + "/cache";
         File cachePath = new File(path);
-        if (!cachePath.exists())
+        if (!cachePath. exists())
             cachePath.mkdir();
         return path;
     }
 
     /**
-     * 删除缓存图片目录中的全部图片
+     * Delete all pictures in the cache picture directory
      *
      * @param context
      */

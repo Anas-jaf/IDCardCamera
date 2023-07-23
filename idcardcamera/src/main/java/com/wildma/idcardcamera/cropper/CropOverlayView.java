@@ -70,7 +70,7 @@ public class CropOverlayView extends View {
         drawBackground(canvas);
         drawVertex(canvas);
         drawEdge(canvas);
-//        drawGrid(canvas);//裁剪框内部线条
+//        drawGrid(canvas);//Lines inside the crop box
     }
 
     private void resetPoints() {

@@ -68,26 +68,26 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
                 Camera.Parameters parameters = camera.getParameters();
                 if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                    //竖屏拍照时，需要设置旋转90度，否者看到的相机预览方向和界面方向不相同
+                    //When taking pictures in portrait mode, you need to set the rotation to 90 degrees, otherwise the direction of the camera preview and the direction of the interface will be
                     camera.setDisplayOrientation(90);
                     parameters.setRotation(90);
                 } else {
                     camera.setDisplayOrientation(0);
                     parameters.setRotation(0);
                 }
-                List<Camera.Size> sizeList = parameters.getSupportedPreviewSizes();//获取所有支持的预览大小
+                List<Camera.Size> sizeList = parameters.getSupportedPreviewSizes();//Get all supported preview sizes
                 Camera.Size bestSize = getOptimalPreviewSize(sizeList, ScreenUtils.getScreenWidth(mContext), ScreenUtils.getScreenHeight(mContext));
-                parameters.setPreviewSize(bestSize.width, bestSize.height);//设置预览大小
+                parameters.setPreviewSize(bestSize.width, bestSize.height);//Set preview size
                 camera.setParameters(parameters);
                 camera.startPreview();
-                focus();//首次对焦
+                focus();//first focus
                 //mAutoFocusManager = new AutoFocusManager(camera);//定时对焦
             } catch (Exception e) {
                 Log.d(TAG, "Error setting camera preview: " + e.getMessage());
                 try {
                     Camera.Parameters parameters = camera.getParameters();
                     if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                        //竖屏拍照时，需要设置旋转90度，否者看到的相机预览方向和界面方向不相同
+                        //When taking pictures in portrait mode, you need to set the rotation to 90 degrees, otherwise the direction of the camera preview and the direction of the interface will be different
                         camera.setDisplayOrientation(90);
                         parameters.setRotation(90);
                     } else {
@@ -96,7 +96,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
                     }
                     camera.setParameters(parameters);
                     camera.startPreview();
-                    focus();//首次对焦
+                    focus();//first focus
                     //mAutoFocusManager = new AutoFocusManager(camera);//定时对焦
                 } catch (Exception e1) {
                     e.printStackTrace();
@@ -107,11 +107,11 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     /**
-     * 获取最佳预览大小
+     * Get the best preview size
      *
-     * @param sizes 所有支持的预览大小
-     * @param w     SurfaceView宽
-     * @param h     SurfaceView高
+     * @param sizes All supported preview sizes
+     * @param w     Surface View width
+     * @param h     Surface View height
      * @return
      */
     private Camera.Size getOptimalPreviewSize(List<Camera.Size> sizes, int w, int h) {
@@ -150,17 +150,17 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
-        //因为设置了固定屏幕方向，所以在实际使用中不会触发这个方法
+        //Because the fixed screen orientation is set, this method will not be triggered in actual use
     }
 
     public void surfaceDestroyed(SurfaceHolder holder) {
         holder.removeCallback(this);
-        //回收释放资源
+        //Recycle and release resources
         release();
     }
 
     /**
-     * 释放资源
+     * release resources
      */
     private void release() {
         if (camera != null) {
@@ -177,7 +177,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     /**
-     * 对焦，在CameraActivity中触摸对焦或者自动对焦
+     * Focus, touch focus or auto focus in Camera Activity
      */
     public void focus() {
         if (camera != null) {
@@ -190,9 +190,9 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     /**
-     * 开关闪光灯
+     * switch flash
      *
-     * @return 闪光灯是否开启
+     * @return Is the flash on
      */
     public boolean switchFlashLight() {
         if (camera != null) {
@@ -211,9 +211,9 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     /**
-     * 拍摄照片
+     * Taking Pictures
      *
-     * @param pictureCallback 在pictureCallback处理拍照回调
+     * @param pictureCallback Handle the photo callback in picture Callback
      */
     public void takePhoto(Camera.PictureCallback pictureCallback) {
         if (camera != null) {

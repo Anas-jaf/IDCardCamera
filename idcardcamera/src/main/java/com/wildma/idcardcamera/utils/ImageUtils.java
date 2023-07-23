@@ -24,50 +24,50 @@ import java.io.OutputStream;
 public class ImageUtils {
 
     /**
-     * 保存图片
+     * save Picture
      *
-     * @param src      源图片
-     * @param filePath 要保存到的文件路径
-     * @param format   格式
-     * @return {@code true}: 成功<br>{@code false}: 失败
+     * @param src source image
+     * @param filePath the file path to save to
+     * @param format format
+     * @return {@code true}: success<br>{@code false}: failure
      */
     public static boolean save(Bitmap src, String filePath, CompressFormat format) {
         return save(src, FileUtils.getFileByPath(filePath), format, false);
     }
 
     /**
-     * 保存图片
+     * save Picture
      *
-     * @param src    源图片
-     * @param file   要保存到的文件
-     * @param format 格式
-     * @return {@code true}: 成功<br>{@code false}: 失败
+     * @param src source image
+     * @param file the file to save to
+     * @param format format
+     * @return {@code true}: success<br>{@code false}: failure
      */
     public static boolean save(Bitmap src, File file, CompressFormat format) {
         return save(src, file, format, false);
     }
 
     /**
-     * 保存图片
+     * save Picture
      *
-     * @param src      源图片
-     * @param filePath 要保存到的文件路径
-     * @param format   格式
-     * @param recycle  是否回收
-     * @return {@code true}: 成功<br>{@code false}: 失败
+     * @param src source image
+     * @param filePath the file path to save to
+     * @param format format
+     * @param recycle Whether to recycle
+     * @return {@code true}: success<br>{@code false}: failure
      */
     public static boolean save(Bitmap src, String filePath, CompressFormat format, boolean recycle) {
         return save(src, FileUtils.getFileByPath(filePath), format, recycle);
     }
 
     /**
-     * 保存图片
+     * save Picture
      *
-     * @param src     源图片
-     * @param file    要保存到的文件
-     * @param format  格式
-     * @param recycle 是否回收
-     * @return {@code true}: 成功<br>{@code false}: 失败
+     * @param src source image
+     * @param file the file to save to
+     * @param format format
+     * @param recycle Whether to recycle
+     * @return {@code true}: success<br>{@code false}: failure
      */
     public static boolean save(Bitmap src, File file, CompressFormat format, boolean recycle) {
         if (isEmptyBitmap(src) || !FileUtils.createOrExistsFile(file)) {
@@ -101,7 +101,7 @@ public class ImageUtils {
     }
 
     /**
-     * 将byte[]转换成Bitmap
+     * Convert byte[] to Bitmap
      *
      * @param bytes
      * @param width

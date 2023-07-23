@@ -11,7 +11,7 @@ import android.content.Context;
 public class ScreenUtils {
 
     /**
-     * 获取屏幕宽度（px）
+     * Get screen width（px）
      *
      * @param context
      * @return
@@ -22,7 +22,7 @@ public class ScreenUtils {
 
 
     /**
-     * 获取屏幕高度（px）
+     * Get screen height（px）
      *
      * @param context
      * @return

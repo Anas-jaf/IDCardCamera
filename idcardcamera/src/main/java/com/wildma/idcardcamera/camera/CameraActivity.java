@@ -51,14 +51,14 @@ public class CameraActivity extends Activity implements View.OnClickListener {
     private FrameLayout   mFlCameraOption;
     private View          mViewCameraCropLeft;
 
-    private int     mType;//拍摄类型
-    private boolean isToast = true;//是否弹吐司，为了保证for循环只弹一次
+    private int     mType;//shooting type
+    private boolean isToast = true;// Whether to play toast, in order to ensure that the for loop only plays once
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /*动态请求需要的权限*/
+        /*Permissions required for dynamic requests*/
         boolean checkPermissionFirst = PermissionUtils.checkPermissionFirst(this, IDCardCamera.PERMISSION_CODE_FIRST,
                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA});
         if (checkPermissionFirst) {
@@ -67,11 +67,11 @@ public class CameraActivity extends Activity implements View.OnClickListener {
     }
 
     /**
-     * 处理请求权限的响应
+     * Handle responses to request permissions
      *
-     * @param requestCode  请求码
-     * @param permissions  权限数组
-     * @param grantResults 请求权限结果数组
+     * @param requestCode request code
+     * @param permissions permission array
+     * @param grantResults request permission result array
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -82,7 +82,7 @@ public class CameraActivity extends Activity implements View.OnClickListener {
                 isPermissions = false;
                 if (!ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[i])) { //用户选择了"不再询问"
                     if (isToast) {
-                        Toast.makeText(this, "请手动打开该应用需要的权限", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Please manually open the permissions required by the app", Toast.LENGTH_SHORT).show();
                         isToast = false;
                     }
                 }
@@ -90,10 +90,10 @@ public class CameraActivity extends Activity implements View.OnClickListener {
         }
         isToast = true;
         if (isPermissions) {
-            Log.d("onRequestPermission", "onRequestPermissionsResult: " + "允许所有权限");
+            Log.d("onRequestPermission", "onRequestPermissionsResult: " + "allow all permissions");
             init();
         } else {
-            Log.d("onRequestPermission", "onRequestPermissionsResult: " + "有权限不允许");
+            Log.d("onRequestPermission", "onRequestPermissionsResult: " + "permission not allowed");
             finish();
         }
     }
@@ -122,14 +122,14 @@ public class CameraActivity extends Activity implements View.OnClickListener {
         float screenMaxSize = Math.max(ScreenUtils.getScreenWidth(this), ScreenUtils.getScreenHeight(this));
         float height = (int) (screenMinSize * 0.75);
         float width = (int) (height * 75.0f / 47.0f);
-        //获取底部"操作区域"的宽度
+        //Get the width of the bottom "action area"
         float flCameraOptionWidth = (screenMaxSize - width) / 2;
         LinearLayout.LayoutParams containerParams = new LinearLayout.LayoutParams((int) width, ViewGroup.LayoutParams.MATCH_PARENT);
         LinearLayout.LayoutParams cropParams = new LinearLayout.LayoutParams((int) width, (int) height);
         LinearLayout.LayoutParams cameraOptionParams = new LinearLayout.LayoutParams((int) flCameraOptionWidth, ViewGroup.LayoutParams.MATCH_PARENT);
         mLlCameraCropContainer.setLayoutParams(containerParams);
         mIvCameraCrop.setLayoutParams(cropParams);
-        //获取"相机裁剪区域"的宽度来动态设置底部"操作区域"的宽度，使"相机裁剪区域"居中
+        //Get the width of the "Camera Clipping Area" to dynamically set the width of the bottom "Operation Area", so that the "Camera Clipping Area" is centered
         mFlCameraOption.setLayoutParams(cameraOptionParams);
 
         switch (mType) {
@@ -141,7 +141,7 @@ public class CameraActivity extends Activity implements View.OnClickListener {
                 break;
         }
 
-        /*增加0.5秒过渡界面，解决个别手机首次申请权限导致预览界面启动慢的问题*/
+        /*Add a 0.5 second transition interface to solve the problem that some mobile phones first apply for permission and the preview interface starts slowly*/
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

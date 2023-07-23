@@ -22,7 +22,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:onClick="front"
-                android:text="身份证正面"
+                android:text="front of ID card"
                 android:textSize="16sp"/>
 
             <Button
@@ -32,7 +32,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:onClick="back"
-                android:text="身份证反面"
+                android:text="Back of ID card"
                 android:textSize="16sp"/>
         </LinearLayout>
 

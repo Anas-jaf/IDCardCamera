@@ -46,9 +46,9 @@ public class IDCardCamera {
     }
 
     /**
-     * 打开相机
+     * Turn on the camera
      *
-     * @param IDCardDirection 身份证方向（TYPE_IDCARD_FRONT / TYPE_IDCARD_BACK）
+     * @param IDCardDirection ID card direction（TYPE_IDCARD_FRONT / TYPE_IDCARD_BACK）
      */
     public void openCamera(int IDCardDirection) {
         Activity activity = this.mActivity.get();
@@ -63,10 +63,10 @@ public class IDCardCamera {
     }
 
     /**
-     * 获取图片路径
+     * Get image path
      *
      * @param data Intent
-     * @return 图片路径
+     * @return image path
      */
     public static String getImagePath(Intent data) {
         if (data != null) {

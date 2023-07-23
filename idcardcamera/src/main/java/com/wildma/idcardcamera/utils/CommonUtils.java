@@ -11,19 +11,19 @@ public class CommonUtils {
     private static long lastClickTime;
 
     /**
-     * 判断是否是快速点击
+     * Determine whether it is a quick click
      *
-     * @return true：是，false：否
+     * @return true: yes, false: no
      */
     public static boolean isFastClick() {
         return isFastClick(1000);
     }
 
     /**
-     * 判断是否是快速点击
+     * Determine whether it is a quick click
      *
-     * @param intervalTime 间隔时间，单位毫秒。
-     * @return true：是，false：否
+     * @param intervalTime Interval time in milliseconds.
+     * @return true: yes, false: no
      */
     public static boolean isFastClick(long intervalTime) {
         long time = System.currentTimeMillis();
